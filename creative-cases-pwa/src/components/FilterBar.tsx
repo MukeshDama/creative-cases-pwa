@@ -47,6 +47,32 @@ export const FilterBar = () => {
             </option>
           ))}
         </select>
+
+        {/* View Toggle */}
+<div className="flex items-center gap-2 ml-auto">
+  <button
+    onClick={() => updateParam("view", "grid")}
+    className={`px-3 py-2 text-sm border ${
+      searchParams.get("view") !== "list"
+        ? "bg-black text-white"
+        : "bg-white"
+    }`}
+  >
+    Grid
+  </button>
+
+  <button
+    onClick={() => updateParam("view", "list")}
+    className={`px-3 py-2 text-sm border ${
+      searchParams.get("view") === "list"
+        ? "bg-black text-white"
+        : "bg-white"
+    }`}
+  >
+    List
+  </button>
+</div>
+
       </div>
     </section>
   );
