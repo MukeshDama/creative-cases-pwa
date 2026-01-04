@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import { useAppSelector } from "../app/store/hooks";
 import { CaseCard } from "./CaseCard";
 
-export const CaseSection = () => {
+ const CaseSection = () => {
   const [searchParams] = useSearchParams();
   const cases = useAppSelector((s) => s.cases.items);
 
@@ -63,3 +63,5 @@ export const CaseSection = () => {
 );
 
 };
+
+export default CaseSection;

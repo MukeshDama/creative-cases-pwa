@@ -2,7 +2,7 @@ import { useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export const Contact = () => {
+ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -105,3 +105,5 @@ export const Contact = () => {
     </section>
   );
 };
+
+export default Contact;

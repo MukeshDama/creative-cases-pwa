@@ -1,6 +1,6 @@
 import { useAppSelector } from "../app/store/hooks";
 
-export const Clients = () => {
+const Clients = () => {
   const clients = useAppSelector((s) => s.clients.items);
 
   if (clients.length === 0) return null;
@@ -31,3 +31,5 @@ export const Clients = () => {
     </section>
   );
 };
+
+export default Clients;

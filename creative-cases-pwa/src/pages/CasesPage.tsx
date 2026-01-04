@@ -1,32 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { useAppDispatch } from "../app/store/hooks";
 import { api } from "../services/api";
 
+// Redux actions (simple reducers approach)
 import {
   fetchCasesStart,
   fetchCasesSuccess,
-  fetchCasesError,
-} from "../app/features/cases/casesSlice"
+  fetchCasesError } from "../app/features/cases/casesSlice";
 
 import {
   fetchFiltersStart,
   fetchFiltersSuccess,
   fetchFiltersError,
-} from "../app/features/filters/filtersSlice"
+} from "../app/features/filters/filtersSlice";
 
 import {
   fetchClientsStart,
   fetchClientsSuccess,
   fetchClientsError,
 } from "../app/features/clients/clientsSlice";
+
+// Non-lazy (above the fold)
 import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
-import { FeaturedCases } from "../components/FeaturedCases";
 import { FilterBar } from "../components/FilterBar";
-import { CaseSection } from "../components/CaseSection";
-import { Clients } from "../components/Clients";
-import { Contact } from "../components/Contact";
-import { Footer } from "../components/Footer";
+
+// Lazy-loaded sections (performance)
+const FeaturedCases = lazy(() => import("../components/FeaturedCases"));
+const CaseSection = lazy(() => import("../components/CaseSection"));
+const Clients = lazy(() => import("../components/Clients"));
+const Contact = lazy(() => import("../components/Contact"));
+const Footer = lazy(() => import("../components/Footer"));
 
 export const CasesPage = () => {
   const dispatch = useAppDispatch();
@@ -60,14 +64,25 @@ export const CasesPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Header & Hero (always visible, not lazy) */}
       <Header />
       <Hero />
-      <FeaturedCases />
-      <FilterBar />
-      <CaseSection />
-      <Clients />
-      <Contact />
-      <Footer />
+
+      {/* Lazy-loaded content */}
+      <Suspense
+        fallback={
+          <div className="px-6 py-10 text-gray-500">
+            Loading content…
+          </div>
+        }
+      >
+        <FeaturedCases />
+        <FilterBar />
+        <CaseSection />
+        <Clients />
+        <Contact />
+        <Footer />
+      </Suspense>
     </div>
   );
 };

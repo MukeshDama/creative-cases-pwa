@@ -1,14 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
-import { Provider } from 'react-redux'
-import { store } from './app/store/store.ts'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { store } from "./app/store/store";
+import App from "./App";
+import "./index.css";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-   <Provider store={store}>
+import { registerSW } from "virtual:pwa-register";
+registerSW({ immediate: true });
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <Provider store={store}>
       <App />
     </Provider>
-  </StrictMode>,
-)
+  </React.StrictMode>
+);

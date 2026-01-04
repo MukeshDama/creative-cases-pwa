@@ -1,7 +1,7 @@
 import { useAppSelector } from "../app/store/hooks";
 import { CaseCard } from "./CaseCard";
 
-export const FeaturedCases = () => {
+const FeaturedCases = () => {
   const cases = useAppSelector((s) => s.cases.items);
 
   const featured = cases.filter((c) => c.featured).slice(0, 3);
@@ -26,3 +26,5 @@ export const FeaturedCases = () => {
     </section>
   );
 };
+
+export default FeaturedCases;
