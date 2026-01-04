@@ -1,0 +1,71 @@
+{
+  "cases": [
+    {
+      "id": "case-001",
+      "slug": "rethinking-online-ecosystem",
+      "title": "Rethinking the Entire Online Ecosystem",
+      "excerpt": "A digital transformation for a global platform.",
+      "description": "Full case study content goes here.",
+      "industry": "Technology",
+      "categories": ["UX/UI", "Development"],
+      "clientId": "client-01",
+      "featured": true,
+      "media": {
+        "thumbnail": "/images/cases/ecosystem-thumb.webp",
+        "cover": "/images/cases/ecosystem-cover.webp"
+      },
+      "meta": {
+        "year": 2024,
+        "duration": "6 months",
+        "impact": "40% performance improvement"
+      },
+      "status": "published"
+    },
+    {
+      "id": "case-002",
+      "slug": "modern-finance-platform",
+      "title": "Modern Finance Platform",
+      "excerpt": "Redesigning a fintech experience.",
+      "description": "Detailed fintech case study.",
+      "industry": "Finance",
+      "categories": ["Branding", "UX/UI"],
+      "clientId": "client-02",
+      "featured": false,
+      "media": {
+        "thumbnail": "/images/cases/finance-thumb.webp",
+        "cover": "/images/cases/finance-cover.webp"
+      },
+      "meta": {
+        "year": 2023,
+        "duration": "4 months",
+        "impact": "2x user engagement"
+      },
+      "status": "published"
+    }
+  ],
+  "clients": [
+    {
+      "id": "client-01",
+      "name": "Acme Corp",
+      "logo": "/images/clients/acme.svg",
+      "website": "https://acme.com"
+    },
+    {
+      "id": "client-02",
+      "name": "Finify",
+      "logo": "/images/clients/finify.svg",
+      "website": "https://finify.com"
+    }
+  ],
+  "filters": {
+    "industries": [
+      { "id": "technology", "label": "Technology" },
+      { "id": "finance", "label": "Finance" }
+    ],
+    "categories": [
+      { "id": "ux-ui", "label": "UX/UI" },
+      { "id": "branding", "label": "Branding" },
+      { "id": "development", "label": "Development" }
+    ]
+  }
+}
