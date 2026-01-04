@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import CasesPage from "./pages/CasesPage";
+import {CasesPage} from "./pages/CasesPage";
 
 function App() {
   return (
