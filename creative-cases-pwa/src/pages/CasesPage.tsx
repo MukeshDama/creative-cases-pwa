@@ -21,6 +21,7 @@ import {
 } from "../app/features/clients/clientsSlice";
 import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
+import { FeaturedCases } from "../components/FeaturedCases";
 import { FilterBar } from "../components/FilterBar";
 import { CaseSection } from "../components/CaseSection";
 import { Clients } from "../components/Clients";
@@ -61,6 +62,7 @@ export const CasesPage = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <Hero />
+      <FeaturedCases />
       <FilterBar />
       <CaseSection />
       <Clients />
