@@ -1,8 +1,14 @@
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import CasesPage from "./pages/CasesPage";
+
 function App() {
   return (
-    <div className="min-h-screen">
-      App Shell
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/cases" replace />} />
+        <Route path="/cases" element={<CasesPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
