@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router-dom";
-import { useAppSelector } from "../app/store/hooks"
+import { useAppSelector } from "../app/store/hooks";
+import { CaseCard } from "./CaseCard";
 
 export const CaseSection = () => {
   const [searchParams] = useSearchParams();
@@ -15,15 +16,18 @@ export const CaseSection = () => {
   });
 
   return (
-    <section className="px-6 py-10">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filtered.map((c) => (
-          <div key={c.id} className="border p-4">
-            <h3 className="font-semibold">{c.title}</h3>
-            <p className="text-sm text-gray-600 mt-1">{c.excerpt}</p>
-          </div>
+    <section id="cases" className="px-6 py-10">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filtered.map((item) => (
+          <CaseCard key={item.id} item={item} />
         ))}
       </div>
+
+      {filtered.length === 0 && (
+        <p className="text-center text-gray-500 mt-10">
+          No cases found.
+        </p>
+      )}
     </section>
   );
 };
