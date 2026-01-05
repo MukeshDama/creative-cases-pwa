@@ -1,3 +1,4 @@
+
 {
   "cases": [
     {
@@ -41,23 +42,101 @@
         "impact": "2x user engagement"
       },
       "status": "published"
+    },
+    {
+      "id": "case-003",
+      "slug": "scalable-saas-dashboard",
+      "title": "Scalable SaaS Dashboard",
+      "excerpt": "Building a data-heavy analytics platform.",
+      "description": "End-to-end SaaS dashboard development.",
+      "industry": "Technology",
+      "categories": ["UX/UI", "Development"],
+      "clientId": "client-03",
+      "featured": true,
+      "media": {
+        "thumbnail": "/images/cases/saas-thumb.webp",
+        "cover": "/images/cases/saas-cover.webp"
+      },
+      "meta": {
+        "year": 2024,
+        "duration": "5 months",
+        "impact": "60% faster reporting"
+      },
+      "status": "published"
+    },
+    {
+      "id": "case-004",
+      "slug": "ecommerce-growth-engine",
+      "title": "E-commerce Growth Engine",
+      "excerpt": "Optimizing conversion for an online retailer.",
+      "description": "UX and performance optimization case study.",
+      "industry": "Retail",
+      "categories": ["UX/UI", "Branding"],
+      "clientId": "client-04",
+      "featured": false,
+      "media": {
+        "thumbnail": "/images/cases/ecommerce-thumb.webp",
+        "cover": "/images/cases/ecommerce-cover.webp"
+      },
+      "meta": {
+        "year": 2023,
+        "duration": "3 months",
+        "impact": "35% conversion increase"
+      },
+      "status": "published"
+    },
+    {
+      "id": "case-005",
+      "slug": "healthcare-digital-platform",
+      "title": "Healthcare Digital Platform",
+      "excerpt": "Transforming patient experience digitally.",
+      "description": "Secure and scalable healthcare platform.",
+      "industry": "Healthcare",
+      "categories": ["UX/UI", "Development"],
+      "clientId": "client-05",
+      "featured": true,
+      "media": {
+        "thumbnail": "/images/cases/health-thumb.webp",
+        "cover": "/images/cases/health-cover.webp"
+      },
+      "meta": {
+        "year": 2022,
+        "duration": "7 months",
+        "impact": "50% faster appointment booking"
+      },
+      "status": "published"
+    },
+    {
+      "id": "case-006",
+      "slug": "banking-mobile-app",
+      "title": "Next-Gen Banking Mobile App",
+      "excerpt": "Designing a secure mobile banking experience.",
+      "description": "Mobile-first banking solution.",
+      "industry": "Finance",
+      "categories": ["UX/UI", "Development"],
+      "clientId": "client-02",
+      "featured": false,
+      "media": {
+        "thumbnail": "/images/cases/banking-thumb.webp",
+        "cover": "/images/cases/banking-cover.webp"
+      },
+      "meta": {
+        "year": 2024,
+        "duration": "6 months",
+        "impact": "3x app retention"
+      },
+      "status": "published"
     }
   ],
   "clients": [
-    {
-      "id": "client-01",
-      "name": "Acme Corp",
-      "logo": "/images/clients/acme.svg",
-      "website": "https://acme.com"
-    },
-    {
-      "id": "client-02",
-      "name": "Finify",
-      "logo": "/images/clients/finify.svg",
-      "website": "https://finify.com"
-    }
+    { "id": "client-01", "name": "Acme Corp", "logo": "/images/clients/acme.png", "website": "https://acme.com" },
+    { "id": "client-02", "name": "Finify", "logo": "/images/clients/finify.png", "website": "https://finify.com" },
+    { "id": "client-03", "name": "Audi", "logo": "/images/clients/audi.png", "website": "https://cloudnest.com" },
+    { "id": "client-04", "name": "Launchly", "logo": "/images/clients/launchly.png", "website": "https://shoporia.com" },
+    { "id": "client-05", "name": "Levis", "logo": "/images/clients/levis.png", "website": "https://medicareplus.com" },
+    { "id": "client-06", "name": "Netflix", "logo": "/images/clients/netflix.png", "website": "https://launchly.io" }
   ],
-  "filters": {
+   "filters": {
     "industries": [
       { "id": "technology", "label": "Technology" },
       { "id": "finance", "label": "Finance" }
@@ -69,3 +148,4 @@
     ]
   }
 }
+

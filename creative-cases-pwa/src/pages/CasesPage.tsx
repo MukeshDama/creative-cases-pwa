@@ -63,6 +63,7 @@ export const CasesPage = () => {
   }, [dispatch]);
 
   return (
+    <main id="main-content">
     <div className="min-h-screen flex flex-col">
       {/* Header & Hero (always visible, not lazy) */}
       <Header />
@@ -84,5 +85,6 @@ export const CasesPage = () => {
         <Footer />
       </Suspense>
     </div>
+    </main>
   );
 };

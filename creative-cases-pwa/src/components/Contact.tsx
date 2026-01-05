@@ -1,106 +1,145 @@
 import { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 type Status = "idle" | "loading" | "success" | "error";
 
- const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+const Contact = () => {
   const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-
-    // simple validation
-    if (!name || !email || !message) {
-      setError("All fields are required.");
-      return;
-    }
-
-    if (!email.includes("@")) {
-      setError("Please enter a valid email.");
-      return;
-    }
-
-    try {
-      setStatus("loading");
-
-      // fake API call
-      await new Promise((resolve) => setTimeout(resolve, 1200));
-
-      setStatus("success");
-      setName("");
-      setEmail("");
-      setMessage("");
-    } catch {
-      setStatus("error");
-      setError("Something went wrong. Please try again.");
-    }
-  };
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    message: Yup.string()
+      .min(10, "Message must be at least 10 characters")
+      .required("Message is required"),
+  });
 
   return (
-    <section id="contact" className="px-6 py-20 border-t">
+    <section
+      id="contact"
+      className="px-6 py-20 border-t"
+      aria-labelledby="contact-heading"
+    >
       <div className="max-w-xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-6 text-center">
+        <h2
+          id="contact-heading"
+          className="text-2xl font-semibold mb-6 text-center"
+        >
           Have a project in mind?
         </h2>
 
         {status === "success" && (
-          <div className="mb-6 p-4 bg-green-50 text-green-700 text-sm rounded">
+          <div
+            className="mb-6 p-4 bg-green-50 text-green-700 text-sm rounded"
+            role="status"
+          >
             Thanks! Your message has been sent successfully.
           </div>
         )}
 
         {status === "error" && (
-          <div className="mb-6 p-4 bg-red-50 text-red-700 text-sm rounded">
-            {error}
+          <div
+            className="mb-6 p-4 bg-red-50 text-red-700 text-sm rounded"
+            role="alert"
+          >
+            Something went wrong. Please try again.
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm mb-1">Name</label>
-            <input
-              type="text"
-              className="w-full border px-3 py-2"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
+       <Formik
+  initialValues={{ name: "", email: "", message: "" }}
+  validationSchema={validationSchema}
+  onSubmit={async (_, { resetForm }) => {
+    try {
+      setStatus("loading");
+      await new Promise((resolve) => setTimeout(resolve, 1200));
+      setStatus("success");
+      resetForm();
+    } catch {
+      setStatus("error");
+    }
+  }}
+>
 
-          <div>
-            <label className="block text-sm mb-1">Email</label>
-            <input
-              type="email"
-              className="w-full border px-3 py-2"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+          {({ isSubmitting, errors, touched }) => (
+            <Form className="space-y-4" noValidate>
+              {/* Name */}
+              <div>
+                <label htmlFor="name" className="block text-sm mb-1">
+                  Name
+                </label>
+                <Field
+                  id="name"
+                  name="name"
+                  type="text"
+                  className="w-full border px-3 py-2"
+                  aria-invalid={Boolean(errors.name && touched.name)}
+                  aria-describedby="name-error"
+                />
+                <ErrorMessage
+                  name="name"
+                  component="p"
+                  id="name-error"
+                  className="text-sm text-red-600 mt-1"
+                />
+              </div>
 
-          <div>
-            <label className="block text-sm mb-1">Message</label>
-            <textarea
-              className="w-full border px-3 py-2 min-h-[120px]"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-          </div>
+              {/* Email */}
+              <div>
+                <label htmlFor="email" className="block text-sm mb-1">
+                  Email
+                </label>
+                <Field
+                  id="email"
+                  name="email"
+                  type="email"
+                  className="w-full border px-3 py-2"
+                  aria-invalid={Boolean(errors.email && touched.email)}
+                  aria-describedby="email-error"
+                />
+                <ErrorMessage
+                  name="email"
+                  component="p"
+                  id="email-error"
+                  className="text-sm text-red-600 mt-1"
+                  role="alert"
+                />
+              </div>
 
-          {error && status !== "error" && (
-            <p className="text-sm text-red-600">{error}</p>
+              {/* Message */}
+              <div>
+                <label htmlFor="message" className="block text-sm mb-1">
+                  Message
+                </label>
+                <Field
+                  as="textarea"
+                  id="message"
+                  name="message"
+                  className="w-full border px-3 py-2 min-h-[120px]"
+                  aria-invalid={Boolean(errors.message && touched.message)}
+                  aria-describedby="message-error"
+                />
+                <ErrorMessage
+                  name="message"
+                  component="p"
+                  id="message-error"
+                  className="text-sm text-red-600 mt-1"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting || status === "loading"}
+                className="w-full py-2 bg-black text-white disabled:opacity-50"
+              >
+                {status === "loading" ? "Sending..." : "Send Message"}
+              </button>
+            </Form>
           )}
-
-          <button
-            type="submit"
-            disabled={status === "loading"}
-            className="w-full py-2 bg-black text-white disabled:opacity-50"
-          >
-            {status === "loading" ? "Sending..." : "Send Message"}
-          </button>
-        </form>
+        </Formik>
       </div>
     </section>
   );

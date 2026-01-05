@@ -7,8 +7,8 @@ const Clients = () => {
 
   return (
     <section id="clients" className="px-6 py-16 border-t">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-xl font-semibold mb-8 text-center">
+      <div className="max-w-6xl mx-auto pb-12 bg-black">
+        <h2 className="text-xl font-semibold mb-8 text-center text-white pt-5">
           Trusted by teams worldwide
         </h2>
 

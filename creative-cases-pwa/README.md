@@ -1,73 +1,82 @@
-# React + TypeScript + Vite
+# Creative Cases – PWA Case Showcase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **data-driven, high-performance case showcase Progressive Web App (PWA)** built with **React 19**, **TypeScript**, and **Tailwind CSS**.  
+Designed with **clarity, maintainability, and real-world frontend architecture** in mind.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Preview
+_(Add your deployed URL here – Netlify / Vercel)_
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Goals
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Showcase creative case studies in a modern UI
+- Filter and group cases using **URL-driven state**
+- Support **Grid ↔ List** view toggle
+- Consume data from a **fake REST API (json-server)**
+- Achieve **95–100 Lighthouse scores**
+- Be **installable & offline-ready (PWA)**
+- Keep the codebase **simple, readable, and easy to hand over**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Frontend
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS** (Flexbox + Grid)
+- **React Router v7**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### State Management
+- **Redux Toolkit**
+- Simple reducers (no `createAsyncThunk`)
+- Typed hooks (`useAppDispatch`, `useAppSelector`)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Forms & Validation
+- **Formik**
+- **Yup**
+
+### Backend (Mock)
+- **json-server**
+- REST-style endpoints:
+  - `/cases`
+  - `/filters`
+  - `/clients`
+
+### Build & Performance
+- **Vite**
+- **vite-plugin-pwa**
+- Lazy loading (`React.lazy`)
+- Native image lazy loading
+- WebP images
+
+---
+
+
+## Getting Started (Local Development)
+
+## Install dependencies
+```bash
+npm install
+
+## Start mock backend
+npm run server
+
+## Start frontend
+npm run dev
+## Preview
+http://localhost:5173/cases
+
+
+## Production Build
+npm run build
+npm run preview
+
+## Preview 
+http://localhost:4173/cases
+
